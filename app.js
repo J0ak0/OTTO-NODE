@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 
+const fs = require ('fs')
+
 app.use(express.static("public"))
 
 app.get('/', (req, res) => {
@@ -20,8 +22,22 @@ app.post('/contact', (req, res) => {
 })
 
 app.get('/users', (req, res) => {
-    res.sendFile (__dirname + "/data/users.json")
-})
+   // res.sendFile (__dirname + "/data/users.json")
+    const buffer = fs.readFileSync(__dirname + "/data/users.json")
+
+    console.log(buffer);
+
+    const array = JSON.parse(buffer);
+    console.log(array)
+
+    res.json(array);
+
+});
+
+app.get("/productos/:id", (req,res) => {
+    const id = req.params.id;
+    res.send(id)
+});
 
 const PORT = process.env.PORT || 3000;
 
