@@ -11,6 +11,10 @@ app.get('/contacto', (req, res) => {
     res.send("Contacto")
 })
 
+app.get("/contact", (req, res) => {
+    res.sendFile(__dirname + "/contact.html")
+})
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`))
