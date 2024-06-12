@@ -12,12 +12,20 @@ app.get('/contacto', (req, res) => {
 })
 
 app.get("/contact", (req, res) => {
-    res.sendFile(__dirname + "/contact.html")
+    res.sendFile(__dirname + "/contact.html");
+})
+
+app.post('/contact', (req, res) => {
+    res.send("Formulario recibido");
+})
+
+app.get('/users', (req, res) => {
+    res.sendFile (__dirname + "/data/users.json")
 })
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => console.log(`http://localhost:${PORT}`))
+app.listen(PORT, () => console.log(`Iniciado - http://localhost:${PORT}`))
 
 // const server = http.createServer((req,res) => {
 //     const file = fs.readFileSync(__dirname + "/index.html");
